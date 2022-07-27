@@ -19,7 +19,7 @@ import java.util.concurrent.atomic.AtomicLong;
     }
 
   public String sayPostHello(User user){
-        return "Hello Mr " +user.getFirstName()+" "+user.getLastName()+"!!!";
+        return "Hello Mr  " +user.getFirstName()+" "+user.getLastName()+ "!!!";
     }
 
 }
