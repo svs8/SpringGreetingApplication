@@ -14,27 +14,38 @@ import java.util.concurrent.atomic.AtomicLong;
 public class GreetingController {
     @Autowired
     private IGreetingService greetingService;
-    private static final String template ="Hello, %s";
+    private static final String template = "Hello, %s";
     private final AtomicLong counter = new AtomicLong();
 
     @GetMapping("/greeting")
-    public Greeting greeting(@RequestParam(value="name",defaultValue="World")String name){
-        return new Greeting(counter.incrementAndGet(), String.format(template,name));
+    public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
+        return new Greeting(counter.incrementAndGet(), String.format(template, name));
     }
+
     @GetMapping("greeting/service")
     public Greeting greeting() {
-            Greeting response = greetingService.sayHello();
-            return response;
-        }
+        Greeting response = greetingService.sayHello();
+        return response;
+    }
 
     @PostMapping("/greeting01")
-    public String greeting01(@RequestBody User user){
+    public String greeting01(@RequestBody User user) {
         String newUser;
         newUser = greetingService.sayPostHello(user);
         return newUser;
 
     }
 
+
+
+    @GetMapping(value = {"", "/"})
+    public Greeting greeting02(@RequestParam(value = "fname") String fname,@RequestParam(value = "lname") String lname){
+//        return new Greeting(counter.incrementAndGet(), String.format(template, name));
+        User user = new User();
+        user.setFirstName(fname);
+        user.setLastName(lname);
+        return greetingService.addGreeting(user);
     }
+}
 
 
