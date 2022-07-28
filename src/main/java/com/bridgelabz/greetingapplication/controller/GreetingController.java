@@ -6,6 +6,7 @@ import com.bridgelabz.greetingapplication.service.IGreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 
@@ -45,6 +46,12 @@ public class GreetingController {
         user.setFirstName(fname);
         user.setLastName(lname);
         return greetingService.addGreeting(user);
+    }
+
+    @GetMapping("/show/{id}")
+    public Optional<Greeting> sayHelloById(@PathVariable int id) {
+        Optional<Greeting> response = greetingService.sayHelloById(id);
+        return response;
     }
 }
 

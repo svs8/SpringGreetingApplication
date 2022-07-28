@@ -6,6 +6,7 @@ import com.bridgelabz.greetingapplication.repository.SpringRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Service
@@ -32,7 +33,10 @@ import java.util.concurrent.atomic.AtomicLong;
         String message = template + user.getFirstName() + " " + user.getLastName() + "!!!";
         return springRepository.save(new Greeting(counter.incrementAndGet(), message));
     }
-
+    @Override
+    public Optional<Greeting> sayHelloById(int id) {
+        return springRepository.findById(Long.valueOf(id));
+    }
 
 }
 
