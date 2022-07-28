@@ -1,27 +1,21 @@
 package com.bridgelabz.greetingapplication.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+
+@Getter
+@Setter
 public class User {
     private String firstName;
     private String lastName;
 
-    public String getFirstName() {
-        return firstName;
-    }
+//    public User(String firstName, String lastName) {
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//    }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 
     @Override
     public String toString() {
@@ -30,5 +24,11 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 '}';
     }
+//    @Override
+//    public String toString() {
+//        String str = (firstName != null)? firstName+" ":"";
+//        str += (lastName != null)? lastName:"";
+//        return str.trim();
+//    }
 
 }

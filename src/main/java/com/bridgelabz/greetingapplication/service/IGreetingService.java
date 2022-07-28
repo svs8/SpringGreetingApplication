@@ -7,6 +7,10 @@ public interface IGreetingService {
 
     Greeting sayHello();
     String sayPostHello(User user);
-    }
+
+    Greeting addGreeting(User user);
+
+//    Greeting saveHello(User user);
+}
 
 
